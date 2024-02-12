@@ -1,0 +1,41 @@
+<div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Crear Tarea</h4>
+                <button type="button" class="close" aria-label="Close" (click)="volver()"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off" [formGroup]="createTareaForm" (ngSubmit)="crearTarea()">
+                    <div class="form-group">
+                        <label class="control-label">Tarea:</label>
+                        <input class="form-control" type="text" placeholder="Digite la tarea" formControlName="descripcion" >                    
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Categoria:</label>
+                          <select class="form-control" formControlName="categoria"  >
+                            <option disabled selected>-Elige una categoria-</option>
+                            <option *ngFor="let categoria of listCategorias"  value="{{ categoria.idCategoria }}">{{ categoria.descripcion }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fecha:</label>
+                        <input type="date" class="form-control" formControlName="fecha" >                        
+                    </div>
+                    <div class="row">
+                        <div class="col text-danger">
+                            <p *ngIf="campoNoValido('descripcion')">La tarea es obligatoria</p>
+                            <p *ngIf="campoNoValido('categoria')">Debe seleccionar la categoria</p>
+                            <p *ngIf="campoNoValido('fecha')">Debe seleccionar la fecha</p>
+                        </div>
+                    </div>    
+                                  
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="volver()">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="crearTarea()">Crear</button>
+            </div>  
+        </div>
+    </div>
+</div>
