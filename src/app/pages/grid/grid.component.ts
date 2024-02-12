@@ -53,7 +53,6 @@ export class GridComponent {
         denyButtonText: `No`
       }).then((result) => {
         if (result.isConfirmed) {
-          //Swal.fire("Saved!", "", "success");
           if(this.tareaSelection.finalizada)
           {
             Swal.fire('Error', 'Ya esta tarea se encuentra finalizada.', 'error');
